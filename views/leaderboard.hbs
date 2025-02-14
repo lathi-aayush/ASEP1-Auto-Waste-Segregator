@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garbage Segregation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f4f4f4;
+        }
+        .navbar1{
+            background-color: #008080;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+        }.navbar2{
+            background-color: #000000;
+            color: white;
+            padding: 12px;
+            font-size: 25px;
+            font-weight: bold;
+            
+        }.navbardata{
+            float:left;
+            width: 25%;
+            cursor: pointer;
+            font-size: 15px;
+            text-align: center;
+        }.navbar2::after{
+            content: "";
+            display: table;
+            clear: both;
+        }a{
+            color:white;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.2s ease-in-out;
+        }a:hover{
+            
+            transform: scale(1.2);
+        }.userInfo {
+                margin: 20px auto;
+                padding: 20px;
+                width: 80%;
+                background-color: #fff;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                overflow-x: auto; /* Makes it scrollable on small screens */
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                text-align: left;
+            }
+
+            th, td {
+                border: 1px solid #ddd;
+                padding: 12px;
+            }
+
+            th {
+                background-color: #008080;
+                color: white;
+                font-size: 18px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #f9f9f9;
+            }
+
+            tr:hover {
+                background-color: #f1f1f1;
+                transition: 0.3s;
+            }
+
+            td {
+                font-size: 16px;
+            }
+
+    </style>
+</head>
+<body><script>let rank=1;
+    
+</script>
+    <div class="navbar1">
+        Users who Segregated Garbage the most
+    </div>
+    <div class="navbar2">
+        <div class="navbardata"><a href="index">Home</a></div>
+        <div class="navbardata"><a href="Segregation">Segregate</a></div>
+        <div class="navbardata"><a href="ngoRegistration">ngo Registration</a></div>
+        <div class="navbardata"><a href="logout">Logout</a></div>
+    </div>
+    <div class="userInfo">
+    <table>
+        <thead>
+            <tr>
+                <th >rank</th>
+                <th>User Name</th>
+                <th>Garbage Segregated(Number of Times)</th>
+                <th>Location</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each Data}}
+                <tr>
+                    <td class="rank"></td>
+                    <td>{{Name}}</td>
+                    <td>{{garbageSegregationAmt}}</td>
+                    <td>{{Area}}</td>
+                </tr>
+                {{/each}}
+        </tbody>
+    </table>
+</div>
+{{!-- <form action="/auth/updateSegregate" method="POST">
+<button type="submit">submit please</button> --}}
+</form>
+<script>
+   
+    document.addEventListener("DOMContentLoaded", function() {
+        let rows = document.querySelectorAll("tbody tr");
+        rows.forEach((row, index) => {
+            row.querySelector(".rank").textContent = index + 1;
+        });
+    });
+
+</script>
+</body>
+</html>

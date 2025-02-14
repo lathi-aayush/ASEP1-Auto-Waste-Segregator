@@ -1,0 +1,74 @@
+{{!-- <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <title>Fetch using MySQL and Node.js</title>
+    </head>
+    <body>
+      <div class="table-data">
+        <h2>Display Data using Node.js & MySQL</h2>
+       <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Area</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each Data}}
+            <tr>
+                <td>{{id}}</td>
+                <td>{{name}}</td>
+                <td>{{email}}</td>
+                <td>{{area}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+      </div>
+    </body>
+    </html> --}}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="style1.css">
+    </head>
+    <body>
+        <h1>NGO Dashboard</h1>
+        <div class="NGOregistered">
+            <h3>Number of NGOs Registered</h3>
+            <p>{{total_registration}}</p>
+        </div>
+        <div class="product_recycled">
+            <h3>Number of Products Recycled</h3>
+            <p>{{product_recycled}}</p>
+        </div>
+        <div id="data">
+            <ul>
+                <li><a>Name of the Organization</a></li>
+                <li><a>Number of Product Delivered</a></li>
+                <li><a>Data of Registration</a></li>
+                <li><a>Contact Number</a></li>
+                <li><a>Email Address</Address></a></li>
+            </ul>
+        </div>
+        <div id="NGOs">
+            <table id="tabledata">
+                <tbody>
+                {{#each Data}}
+                <tr>
+                    <td>{{id}}</td>
+                    <td>{{name}}</td>
+                    <td>{{email}}</td>
+                    <td>{{area}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>    
+        </div>
+        </body>
+    </html>
