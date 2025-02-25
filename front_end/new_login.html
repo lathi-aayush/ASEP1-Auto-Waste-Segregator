@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrolling Waste Bin</title>
+    <style>
+        body {
+            height: 300px * 3;
+            /* Dynamic height based on waste gaps */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background-color: white;
+            margin: 0;
+        }
+.header{
+    display: flex;
+}
+        /* Navigation Bar */
+        .navigation_bar {
+            width: 782;
+            height: 62px;
+            background-color: #D9D9D9;
+            position: fixed;
+            top: 10px;
+            left: 20%;
+            margin-right: 20%;
+            justify-content: space-around;
+            align-items: center;
+            border-radius: 52.53px;
+            opacity: 50%;
+        }
+
+        .navigation_bar ul {
+            list-style: none;
+            display: flex;
+            gap: 23.08px;
+            padding: 0;
+            margin: 0;
+        }
+
+        .navigation_bar ul li {
+            display: inline;
+            color: black;
+            font-size: 22px;
+            padding: 10px 15px;
+        }
+
+        .navigation_bar ul li a {
+            text-decoration: none;
+            color: black;
+            font-size: 15px;
+            padding: 5px 25px;
+            transition: 0.3s;
+        }
+
+        .navigation_bar ul li a:hover {
+            background-color: #63FFB6;
+            color: black;
+            border-radius: 50.53px;
+        }
+
+        #header {
+            display: flex;
+            margin-top: 60px;
+            /* Added margin to avoid overlap with navbar */
+        }
+
+        #header,
+        li {
+            list-style: none;
+        }
+
+        .container {
+            position: relative;
+            width: 80%;
+            height: 100px;
+            display: flex;
+            /* Height set to gap between waste elements */
+        }
+
+        .dustbin {
+            position: fixed;
+            top: 10px;
+            /* Adjust this if needed */
+            right: 5%;
+            width: 100px;
+            height: 100px;
+            background: url('dustbin.png') no-repeat center/contain;
+            transform: rotate(180deg);
+            /* Inverted dustbin */
+            z-index: 10;
+        }
+
+        .waste {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: url('waste.png') no-repeat center/contain;
+            right: 5%;
+            transition: transform 1s ease-in-out, opacity 0.5s ease-in-out;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <header id="header">
+        <nav class="navigation_bar">
+            <ul>
+                <li></li>
+                <li>Sortify</li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#what-we-do">Collabs</a></li>
+                <li><a href="#why-it-matters">Pricing</a></li>
+                <li><a href="#join-us">More</a></li>
+                <li><a href="#">Login</a></li>
+                <li><a href="/logout">Product</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <div class="container">
+        <div class="dustbin"></div>
+        <div class="waste" style="top: 500px;"></div>
+        <div class="waste" style="top: 800px;"></div>
+        <div class="waste" style="top: 1100px;"></div>
+    </div>
+
+    <script>
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener('scroll', () => {
+            const dustbin = document.querySelector('.dustbin');
+            const dustbinRect = dustbin.getBoundingClientRect();
+            const wastes = document.querySelectorAll('.waste');
+            let currentScrollY = window.scrollY;
+            let scrollDirection = currentScrollY > lastScrollY ? 'down' : 'up';
+            let scrollAmount = Math.abs(currentScrollY - lastScrollY);
+            lastScrollY = currentScrollY;
+
+            wastes.forEach((waste) => {
+                let currentTransform = waste.style.transform.match(/translate\(-50%, ([\d-]+)px\)/);
+                let currentOffset = currentTransform ? parseInt(currentTransform[1]) : 0;
+                let newOffset = scrollDirection === 'down' ? currentOffset - scrollAmount : currentOffset + scrollAmount;
+                waste.style.transform = `translate(-50%, ${newOffset}px)`;
+            });
+        });
+    </script>
+</body>
+
+</html>
