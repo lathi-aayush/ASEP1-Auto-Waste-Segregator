@@ -11,13 +11,20 @@
             --theme-color: #63FFB6;
         }
 
-        body {
-            font-family: 'Inter', sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            padding-top: 90px;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0px;
+            padding: 0px;
             background-color: #ffffff;
             text-align: center;
+            padding-left: 15px;
+            padding-right: 15px;
         }
 
         .navbar {
@@ -96,11 +103,97 @@
             transform: scale(1.05);
         }
 
+
+        #what-we-do {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            background-color: white;
+            color: black;
+            position: relative;
+        }
+
+        #what-we-do h2 {
+            font-size: 5rem;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        #what-we-do .text p {
+            font-size: 2rem;
+            margin-top: 1rem;
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            animation: bounce 1.5s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(10px);
+            }
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            vertical-align: middle;
+            display: inline-block;
+        }
+
+        /* Main CSS */
+        .grid-wrapper>div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .grid-wrapper>div>img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .grid-wrapper {
+            display: grid;
+            grid-gap: 10px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-auto-rows: 200px;
+            grid-auto-flow: dense;
+        }
+
+        .grid-wrapper .wide {
+            grid-column: span 2;
+        }
+
+        .grid-wrapper .tall {
+            grid-row: span 2;
+        }
+
+        .grid-wrapper .big {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
         .game-title {
             transform: translate(0px, 100px);
         }
 
-        .game-title-sort{
+        .game-title-sort {
             font-weight: 100;
         }
 
@@ -173,10 +266,54 @@
     </div>
 
     <div id="what-we-do" class="section">
-        <h2>What We Do</h2>
+        <h2>"We sort the waste"</h2>
         <section class="text">
-            <p>We classify dry waste into two categories:</p>
+            <p>so Earth doesn’t have to look like this</p>
         </section>
+        <div class="scroll-down" onclick="scrollToNextSection()">⬇</div>
+    </div>
+
+    <div class="grid-wrapper">
+        <div>
+            <img src="images/trash-mountain.jpg" alt="" />
+        </div>
+        <div>
+            <img src="images/trash-beach.jpg" alt="" />
+        </div>
+        <div class="tall">
+            <img src="images/trash-ocean.jpg" alt="">
+        </div>
+        <div class="wide">
+            <img src="images/trash-can.jpg" alt="" />
+        </div>
+        <div>
+            <img src="images/trash-monument.jpg" alt="" />
+        </div>
+        <div class="tall">
+            <img src="images/trash-landfill.jpg" alt="" />
+        </div>
+        <div class="big">
+            <img src="images/trash-landfill2.jpg" alt="" />
+        </div>
+        <div>
+            <img src="images/trash-landfill3.jpg" alt="" />
+        </div>
+        <div class="wide">
+            <img src="images/trash-landfill4.jpg" alt="" />
+        </div>
+
+        <!-- important -->
+        <div class="tall">
+            <img src="images/trash-beach2.jpg" alt="" />
+        </div>
+        <div>
+            <img src="images/trash-beach3.jpg" alt="" />
+        </div>
+        <div>
+            <img src="images/trash-ocean2.jpg" alt="" />
+        </div>
+
+
     </div>
 
     <div class="game-container">
@@ -230,6 +367,13 @@
                         sortedContainer.appendChild(bin.firstChild);
                     }
                 });
+            }
+        }
+
+        function scrollToNextSection() {
+            const nextElement = document.getElementById("what-we-do").nextElementSibling;
+            if (nextElement) {
+                nextElement.scrollIntoView({ behavior: "smooth" });
             }
         }
     </script>
